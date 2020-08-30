@@ -15,6 +15,10 @@ const MONTH_NAMES = [
   "Dec",
 ];
 
+/*
+  Parses Date and Time from a string that's in the format MMM DD YYYY HH:MM A
+*/
+
 export function parseDateFromString(date) {
   const regex = /(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d?\d) (\d{4}) \s?(\d?\d):(\d?\d)(AM|PM)/g;
   const regexMatches = [...date.matchAll(regex)][0];
@@ -32,6 +36,10 @@ export function parseDateFromString(date) {
   return new Date(`${month} ${day}, ${year} ${militaryHour}:${minute}:00`);
 }
 
+/*
+  Converts date of a different timezone to local machine's timezone
+*/
+
 export function localizeDate(date, timeZone) {
   const timeInAnotherZone = new Date(
     date.toLocaleString("en-us", { timeZone })
@@ -40,6 +48,10 @@ export function localizeDate(date, timeZone) {
   return new Date(date.getTime() + timeDifference);
 }
 
+/*
+  Returns end_time date in string format of a given activity
+*/
+
 export function getLastActive(activity, timeZone) {
   const lastActiveDate = parseDateFromString(activity.end_time);
   const localizedDate = localizeDate(lastActiveDate, timeZone);
@@ -47,6 +59,10 @@ export function getLastActive(activity, timeZone) {
     MONTH_NAMES[localizedDate.getMonth()]
   } ${localizedDate.getDate()}, ${localizedDate.getFullYear()}`;
 }
+
+/*
+  Checks if a given date matches today
+*/
 
 export function isToday(date) {
   const today = new Date();
@@ -59,6 +75,10 @@ export function isToday(date) {
   }
   return false;
 }
+
+/*
+  Displays time from a date object
+*/
 
 export function displayTime(date) {
   return moment(date).format("HH : MM A");
