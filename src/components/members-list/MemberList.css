@@ -1,0 +1,40 @@
+.member-list {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+.member-list .section {
+  align-self: center;
+  max-width: 40%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.member-list .section.last-seen {
+  max-width: 40%;
+  font-size: 12px;
+  align-self: center;
+  text-align: end;
+}
+
+.calendar-toggle-button {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0;
+}
+
+.custom-modal {
+  max-width: calc(100% - 4%) !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .rbc-toolbar {
+    flex-direction: column;
+    flex-wrap: unset;
+  }
+
+  .rbc-toolbar-label {
+    margin: 10px 0
+  }
+}
