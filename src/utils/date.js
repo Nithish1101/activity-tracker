@@ -81,5 +81,5 @@ export function isToday(date) {
 */
 
 export function displayTime(date) {
-  return moment(date).format("HH : MM A");
+  return moment(date).format("MMM DD HH : MM A");
 }
